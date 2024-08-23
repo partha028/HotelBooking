@@ -33,4 +33,6 @@ public class BookingResponse {
         this.bookingConfirmationCode = bookingConfirmationCode;
     }
 
+    public BookingResponse(Long bookingId, LocalDate checkInDate, LocalDate checkOutDate, String guestFullName, int numOfAdults, int numOfChildren, int totalNumOfGuests, String bookingConfirmationCode, RoomResponse roomResponse) {
+    }
 }
