@@ -19,6 +19,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/bookings")
+@CrossOrigin(origins = "http://localhost:5173")
 public class BookingController {
 
     private final IBookingService bookingService;
@@ -38,8 +39,8 @@ public class BookingController {
         Room room = roomService.getRoomById(booking.getBookingId()).get();
         RoomResponse roomResponse = new RoomResponse(room.getId(), room.getRoomType(), room.getRoomPrice());
         return new BookingResponse(booking.getBookingId(), booking.getCheckInDate(),
-                booking.getCheckOutDate(), booking.getGuestFullName(), booking.getNumOfAdults(),
-                booking.getNumOfChildren(), booking.getTotalNumOfGuests(), booking.getBookingConfirmationCode(),
+                booking.getCheckOutDate(), booking.getGuestName(), booking.getNumberOfAdults(),
+                booking.getNumberOfChildren(), booking.getTotalNumOfGuests(), booking.getBookingConfirmationCode(),
                 roomResponse);
 
     }
@@ -61,7 +62,7 @@ public class BookingController {
             String confirmationCode = bookingService.saveBooking(roomId, bookingRequest);
             return ResponseEntity.ok("Room booked successfully, Your booking confirmation code is :" + confirmationCode);
         }catch(InvalidBookingRequestException e){
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.status(0).body(e.getMessage());
         }
     }
 

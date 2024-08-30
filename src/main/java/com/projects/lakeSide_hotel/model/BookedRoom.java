@@ -22,13 +22,13 @@ public class BookedRoom {
     @Column(name= "check_out")
     private LocalDate checkOutDate;
     @Column(name= "guest_fullName")
-    private String guestFullName;
+    private String guestName;
     @Column(name= "guest_email")
     private String guestEmail;
     @Column(name= "adults")
-    private int numOfAdults;
+    private int numberOfAdults;
     @Column(name= "children")
-    private int numOfChildren;
+    private int numberOfChildren;
     @Column(name= "total_guests")
     private int totalNumOfGuests;
     @Column(name= "confirmation_code")
@@ -38,16 +38,16 @@ public class BookedRoom {
     private Room room;
 
     public void calculateTotalNumberOfGuests(){
-        this.totalNumOfGuests = this.numOfAdults + this.numOfChildren;
+        this.totalNumOfGuests = this.numberOfAdults + this.numberOfChildren;
     }
 
-    public void setNumOfAdults(int numOfAdults) {
-        this.numOfAdults = numOfAdults;
+    public void setNumOfAdults(int numberOfAdults) {
+        this.numberOfAdults = numberOfAdults;
         calculateTotalNumberOfGuests();
     }
 
-    public void setNumOfChildren(int numOfChildren) {
-        this.numOfChildren = numOfChildren;
+    public void setNumberOfChildren(int numOfChildren) {
+        this.numberOfChildren = numOfChildren;
         calculateTotalNumberOfGuests();
     }
 
